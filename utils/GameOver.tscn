@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://utils/GameOver.gd" type="Script" id=1]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -100.0
+margin_right = 150.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 141.071, 92.7783 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+margin_left = 47.9415
+margin_top = 28.2171
+margin_right = 247.941
+margin_bottom = 88.2172
+rect_clip_content = false
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][wave] Game Over [/wave][/center]"
+text = " Game Over "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ColorRect"]
+margin_left = 109.434
+margin_top = 113.167
+margin_right = 182.434
+margin_bottom = 133.167
+text = "restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_Button_pressed"]
