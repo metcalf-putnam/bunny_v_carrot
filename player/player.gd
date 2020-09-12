@@ -19,6 +19,7 @@ signal player_killed
 
 
 func _ready():
+	$CPUParticles2D.emitting = false
 	animationState = $AnimationTree["parameters/playback"]
 	$HealthBar.value = health
 	screen_size = get_viewport_rect().size
@@ -52,7 +53,7 @@ func _input(event):
 
 
 func dash():
-	# TODO: add trail effect
+	$CPUParticles2D.emitting = true
 	state = State.DASHING
 	$Sprite.modulate = dash_modulate
 	$Tween.interpolate_property(self, "speed", 
@@ -60,6 +61,7 @@ func dash():
 			Tween.TRANS_ELASTIC, Tween.EASE_IN)
 	$Tween.start()
 	yield($Tween, "tween_completed")
+	$CPUParticles2D.emitting = false
 	if state == State.INACTIVE:
 		return
 	state = State.ACTIVE
