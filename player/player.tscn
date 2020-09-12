@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/Orc_Running_32x32.png" type="Texture" id=2]
@@ -304,6 +304,9 @@ particles_anim_h_frames = 7
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="Gradient" id=36]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.0901961 )
+
 [node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -318,7 +321,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 6
-frame = 30
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_left = SubResource( 2 )
@@ -380,6 +383,6 @@ speed_scale = 2.0
 local_coords = false
 texture = ExtResource( 5 )
 gravity = Vector2( 0, 0 )
+color_ramp = SubResource( 36 )
 anim_speed = 1.0
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
