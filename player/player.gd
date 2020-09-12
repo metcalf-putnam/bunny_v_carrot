@@ -2,13 +2,14 @@ extends KinematicBody2D
 var speed = 200
 var animationState : AnimationNodeStateMachinePlayback
 var health := 100.0
+var screen_size
 signal player_killed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animationState = $AnimationTree["parameters/playback"]
 	$HealthBar.value = health
-
+	screen_size = get_viewport_rect().size
 
 func _physics_process(_delta):
 	var velocity = Vector2()
@@ -23,7 +24,10 @@ func _physics_process(_delta):
 	else:
 		animationState.travel("idle")
 
-
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
+	
+	
 func update_sprite(velocity : Vector2):
 	var direction = velocity.normalized()
 	$AnimationTree.set("parameters/idle/blend_position", direction)
