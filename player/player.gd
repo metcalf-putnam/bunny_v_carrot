@@ -44,6 +44,7 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("boss_weapon"):
 		hit(body.damage)
 		$hit_sound.play()
+		body.queue_free()
 
 
 func revive():
