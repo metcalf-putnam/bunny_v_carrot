@@ -8,8 +8,12 @@ var Player
 var bullet_speed = 350
 var turn_speed = PI*2/3
 var desired_rotation
+var health := 100
+signal boss_health_updated
+
 
 func _ready():
+	emit_signal("boss_health_updated", health)
 	if player_path:
 		Player = get_node(player_path)
 	else:
@@ -17,7 +21,14 @@ func _ready():
 
 
 func _on_Timer_timeout():
+	pass
 	$AnimationPlayer.play("shoot")
+
+
+func take_damage(damage : float):
+	print("boss taking damage")
+	health -= damage
+	emit_signal("boss_health_updated", health)
 
 
 func spiral_shoot():
@@ -43,6 +54,11 @@ func _process(delta):
 
 func start():
 	$Timer.start()
+
+
+func revive():
+	health = 100 
+	emit_signal("boss_health_updated", health)
 
 
 func stop():
