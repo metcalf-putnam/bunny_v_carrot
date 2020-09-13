@@ -3,7 +3,7 @@ var damage := 20
 
 
 func _ready():
-	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer.play()
 
 
 func _on_VisibilityNotifier2D_screen_exited():

@@ -6,5 +6,6 @@ export_presets.cfg
 
 # Mono-specific ignores
 .mono/
+out/
 data_*/
-.out/
+

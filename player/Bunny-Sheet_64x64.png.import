@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BigBadCarrot_112x117.png-049c8be4fdf57469aa6980923f8c43a3.stex"
+path="res://.import/Bunny-Sheet_64x64.png-63c45f37be55d85d9cf85afa463f68e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss/BigBadCarrot_112x117.png"
-dest_files=[ "res://.import/BigBadCarrot_112x117.png-049c8be4fdf57469aa6980923f8c43a3.stex" ]
+source_file="res://player/Bunny-Sheet_64x64.png"
+dest_files=[ "res://.import/Bunny-Sheet_64x64.png-63c45f37be55d85d9cf85afa463f68e8.stex" ]
 
 [params]
 
