@@ -7,7 +7,7 @@ export (NodePath) var player_path
 var Player
 var bullet_speed = 350
 var turn_speed = PI*2/3
-
+var desired_rotation
 
 func _ready():
 	if player_path:
@@ -19,7 +19,7 @@ func _ready():
 func _on_Timer_timeout():
 	pass
 	#shoot()
-	$AnimationPlayer.play("shoot")
+	#$AnimationPlayer.play("shoot")
 
 
 func shoot():
@@ -32,15 +32,20 @@ func shoot():
 
 
 func _process(delta):
+	desired_rotation = rotation
+	
 	var turn_rotation_max = turn_speed * delta
 	var player_angle = get_angle_to(Player.global_position)
 	if abs(player_angle) <= turn_rotation_max:
-		rotation = rotation + player_angle
+		desired_rotation = rotation + player_angle
 	elif player_angle > 0:
-		rotation = rotation + turn_rotation_max
+		desired_rotation = rotation + turn_rotation_max
 	else:
-		rotation = rotation - turn_rotation_max
+		desired_rotation = rotation - turn_rotation_max
+	_integrate_forces(rotation)
 
+func _integrate_forces(state):
+	state = desired_rotation
 
 func start():
 	$Timer.start()
@@ -51,6 +56,7 @@ func stop():
 	
 
 func _on_quick_volley():
+	apply_central_impulse(Vector2(-50, 0))
 	var bullet = Bullet.instance()
 	get_tree().get_root().add_child(bullet)
 	bullet.global_position = $GunTip.global_position
