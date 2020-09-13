@@ -93,7 +93,7 @@ func dash():
 func update_sprite(direction : Vector2):
 	$AnimationTree.set("parameters/idle/blend_position", direction)
 	$AnimationTree.set("parameters/walk/blend_position", direction)
-	#$AnimationTree.set("parameters/attack/blend_position", direction)
+	$AnimationTree.set("parameters/attack/blend_position", direction)
 	
 	
 	if state == State.ACTIVE:
