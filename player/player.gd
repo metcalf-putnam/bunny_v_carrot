@@ -62,10 +62,10 @@ func dash():
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	$CPUParticles2D.emitting = false
+	$Sprite.modulate = normal_modulate
 	if state == State.INACTIVE:
 		return
 	state = State.ACTIVE
-	$Sprite.modulate = normal_modulate
 
 
 func update_sprite(direction : Vector2):
@@ -81,6 +81,7 @@ func hit(damage):
 	if health <= 0:
 		emit_signal("player_killed")
 		$death_sound.play()
+		
 
 
 func _on_Area2D_body_entered(body):
