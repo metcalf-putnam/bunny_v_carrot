@@ -4,7 +4,7 @@
 [ext_resource path="res://boss/boss.gd" type="Script" id=2]
 [ext_resource path="res://bullet/bullet.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 50.4542
 
 [sub_resource type="Animation" id=2]
@@ -37,37 +37,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 1, 0 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -40, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -40, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -75,25 +51,44 @@ tracks/3/keys = {
 "method": "_on_quick_volley"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -40, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -40, 0 ), Vector2( 0, 0 ) ]
+}
 
-[node name="carrot" type="RigidBody2D"]
-rotation = -3.91826
-gravity_scale = 0.0
+[node name="carrot" type="KinematicBody2D"]
 script = ExtResource( 2 )
 Bullet = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2( -40, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -40, 0 )
 rotation = -1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 6
-frame = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.07
@@ -104,5 +99,5 @@ anims/idle = SubResource( 2 )
 anims/shoot = SubResource( 3 )
 
 [node name="GunTip" type="Position2D" parent="."]
-position = Vector2( 61.4026, -4.00452 )
+position = Vector2( 108.578, -6.30422 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
