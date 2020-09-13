@@ -90,7 +90,7 @@ func hit(damage):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("boss_weapon"):
 		hit(body.damage)
-		body.queue_free()
+		body.explode()
 
 
 func set_inactive():
