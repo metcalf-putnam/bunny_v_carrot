@@ -43,11 +43,13 @@ func _physics_process(_delta):
 	else:
 		animationState.travel("idle")
 
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	position.x = clamp(position.x, 12, screen_size.x - 12)
+	position.y = clamp(position.y, 12, screen_size.y - 20)
 
 
 func _input(event):
+	if state == State.INACTIVE or state == State.DASHING:
+		return
 	if event.is_action_pressed("ui_dash"):
 		dash()
 
@@ -78,8 +80,9 @@ func hit(damage):
 	$hit_sound.play()
 	health -= damage
 	$HealthBar.value = health
-	if health <= 0:
+	if health <= 0 and state != State.INACTIVE:
 		emit_signal("player_killed")
+		state = State.INACTIVE
 		$death_sound.play()
 		
 

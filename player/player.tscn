@@ -389,7 +389,6 @@ volume_db = -10.0
 [node name="Tween" type="Tween" parent="."]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-visible = false
 material = SubResource( 35 )
 position = Vector2( -0.118053, 1.75172 )
 amount = 10
