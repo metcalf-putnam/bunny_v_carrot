@@ -76,7 +76,9 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -40, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="carrot" type="KinematicBody2D"]
+[node name="carrot" type="KinematicBody2D" groups=[
+"boss",
+]]
 script = ExtResource( 2 )
 Bullet = ExtResource( 3 )
 
