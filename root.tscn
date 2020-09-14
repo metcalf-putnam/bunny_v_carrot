@@ -358,7 +358,7 @@ _data = {
 [sub_resource type="CircleShape2D" id=13]
 radius = 160.298
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 resource_name = "death"
 length = 6.0
 tracks/0/type = "value"
@@ -484,7 +484,7 @@ tracks/9/keys = {
 "values": [ "retry?" ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 resource_name = "feast"
 length = 4.0
 tracks/0/type = "value"
@@ -622,7 +622,7 @@ tracks/10/keys = {
 "values": [ "play again?" ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 resource_name = "normal"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:modulate")
@@ -697,9 +697,11 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
+
 [sub_resource type="Animation" id=14]
 resource_name = "title"
 length = 2.7
+
 tracks/0/type = "value"
 tracks/0/path = NodePath("BossStart/carrot:position")
 tracks/0/interp = 1
@@ -878,7 +880,7 @@ curve = SubResource( 10 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CarrotBombs/InnerRing"]
 position = Vector2( 457.332, 254.614 )
-rotation = 0.131312
+rotation = 0.131317
 offset = 0.00158691
 
 [node name="MiddleRing" type="Path2D" parent="CarrotBombs"]
@@ -886,14 +888,14 @@ curve = SubResource( 11 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CarrotBombs/MiddleRing"]
 position = Vector2( 481.508, 228.018 )
-rotation = 0.204635
+rotation = 0.204644
 
 [node name="OuterRing" type="Path2D" parent="CarrotBombs"]
 curve = SubResource( 12 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CarrotBombs/OuterRing"]
 position = Vector2( 468.144, 193.273 )
-rotation = 0.104872
+rotation = 0.104866
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarrotBombs"]
 position = Vector2( 478.877, 331.612 )
@@ -906,10 +908,10 @@ stream = ExtResource( 8 )
 volume_db = -20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 15 )
-anims/feast = SubResource( 16 )
-anims/normal = SubResource( 17 )
-anims/title = SubResource( 14 )
+anims/death = SubResource( 14 )
+anims/feast = SubResource( 15 )
+anims/normal = SubResource( 16 )
+anims/title = SubResource( 17 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 0.113725, 0.113725, 0.113725, 1 )

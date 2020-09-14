@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/Bunny-Sheet_64x64.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/Dash_Particle.png" type="Texture" id=5]
 [ext_resource path="res://player/circle.png" type="Texture" id=6]
 [ext_resource path="res://player/Sword_Slash.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/Log File Pickup.wav" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.51942
@@ -746,7 +747,7 @@ shape = SubResource( 49 )
 
 [node name="death_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.097
+volume_db = -10.0
 
 [node name="hit_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -783,6 +784,13 @@ texture = ExtResource( 6 )
 
 [node name="slash_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -6.5
+pitch_scale = 1.11
+
+[node name="dash_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+attenuation = 0.378929
 
 [node name="DashCooldown" type="Timer" parent="."]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Throwing Portal.wav-8efaf8e5e4226457b938c80eccc1a42b.sample"
+
+[deps]
+
+source_file="res://player/Throwing Portal.wav"
+dest_files=[ "res://.import/Throwing Portal.wav-8efaf8e5e4226457b938c80eccc1a42b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
