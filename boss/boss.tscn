@@ -84,21 +84,17 @@ script = ExtResource( 2 )
 Bullet = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2( -40, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -40, 0 )
 rotation = -1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 6
-frame = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.07
-autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 2 )
