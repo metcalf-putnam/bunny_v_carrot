@@ -63,6 +63,7 @@ func _input(event):
 func attack():
 	state = State.ATTACKING
 	print("attacking!")
+	$slash_sound.play()
 	animationState.travel("attack")
 
 

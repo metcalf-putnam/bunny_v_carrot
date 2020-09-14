@@ -6,6 +6,7 @@ var damage := 25
 
 func _on_warning_end():
 	$AnimationPlayer.play("explode")
+	$AudioStreamPlayer.play()
 
 
 func _on_explosion():
