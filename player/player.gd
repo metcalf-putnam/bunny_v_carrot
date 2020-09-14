@@ -15,7 +15,7 @@ var last_direction = Vector2()
 var dash_modulate = Color(.5, .5, .5)
 var normal_modulate = Color(1, 1, 1)
 var target
-var damage := 10
+var damage := 3
 
 signal player_killed
 

@@ -655,9 +655,10 @@ start_node = "idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=46]
 
 [sub_resource type="StyleBoxFlat" id=47]
-bg_color = Color( 0.243137, 0.619608, 0.164706, 1 )
+bg_color = Color( 1, 0.0235294, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=48]
+bg_color = Color( 0.290196, 0.0431373, 0.0431373, 1 )
 
 [sub_resource type="CapsuleShape2D" id=49]
 radius = 4.01384
@@ -692,7 +693,7 @@ position = Vector2( 0, -0.148651 )
 texture = ExtResource( 2 )
 vframes = 18
 hframes = 4
-frame = 24
+frame = 25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_left = SubResource( 2 )
@@ -724,10 +725,10 @@ parameters/idle/blend_position = Vector2( 0.951638, 0.594828 )
 parameters/walk/blend_position = Vector2( -0.652106, -0.0775862 )
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = -6.62164
-margin_top = -14.1703
-margin_right = 8.37837
-margin_bottom = -11.1703
+margin_left = -15.25
+margin_top = -15.0
+margin_right = 14.75
+margin_bottom = -11.0
 custom_styles/fg = SubResource( 47 )
 custom_styles/bg = SubResource( 48 )
 value = 50.0
