@@ -1091,7 +1091,7 @@ margin_right = 121.888
 margin_bottom = 129.051
 custom_fonts/font = SubResource( 20 )
 toggle_mode = true
-text = "Hard"
+text = "Hell"
 __meta__ = {
 "_edit_use_anchors_": false
 }
