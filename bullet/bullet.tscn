@@ -10,7 +10,10 @@ height = 3.22753
 
 [sub_resource type="AudioStreamRandomPitch" id=2]
 audio_stream = ExtResource( 3 )
+<<<<<<< Updated upstream
 random_pitch = 1.05
+=======
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id=3]
 length = 0.2
@@ -63,7 +66,11 @@ hframes = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 2 )
+<<<<<<< Updated upstream
 volume_db = -17.0
+=======
+volume_db = -16.0
+>>>>>>> Stashed changes
 pitch_scale = 0.55
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

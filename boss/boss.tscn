@@ -111,6 +111,10 @@ position = Vector2( 13.6821, 6.00678 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+<<<<<<< Updated upstream
 volume_db = -27.272
+=======
+volume_db = -27.0
+>>>>>>> Stashed changes
 pitch_scale = 0.75
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
