@@ -23,6 +23,7 @@ func _ready():
 func _on_Timer_timeout():
 	pass
 	$AnimationPlayer.play("shoot")
+	#spiral_shoot()
 
 
 func take_damage(damage : float):
@@ -33,9 +34,10 @@ func take_damage(damage : float):
 
 func spiral_shoot():
 	var bullet = Bullet.instance()
-	add_child(bullet)
+	get_tree().get_root().add_child(bullet)
+	bullet.global_position = $GunTip.global_position
 	# TODO: work in radians so don't need to do a deg2rad function call?
-	bullet.linear_velocity = Vector2(bullet_speed, 0).rotated(deg2rad(bullet_rotation))
+	bullet.linear_velocity = Vector2(bullet_speed, 0).rotated(rotation)
 	bullet.rotation_degrees = bullet_rotation + rotation_offset
 	bullet_rotation = (bullet_rotation + rotation_step) % 360 
 
@@ -66,8 +68,24 @@ func stop():
 	
 
 func _on_quick_volley():
+	# TODO: make prettier
+	# middle
 	var bullet = Bullet.instance()
 	get_tree().get_root().add_child(bullet)
 	bullet.global_position = $GunTip.global_position
 	bullet.linear_velocity = Vector2(bullet_speed, 0).rotated(rotation)
+	bullet.rotation_degrees = rotation_degrees + rotation_offset
+
+	# left
+	bullet = Bullet.instance()
+	get_tree().get_root().add_child(bullet)
+	bullet.global_position = $GunTip/PosLeft.global_position
+	bullet.linear_velocity = Vector2(bullet_speed, 0).rotated(rotation-PI/4)
+	bullet.rotation_degrees = rotation_degrees + rotation_offset
+	
+	# right
+	bullet = Bullet.instance()
+	get_tree().get_root().add_child(bullet)
+	bullet.global_position = $GunTip/PosRight.global_position
+	bullet.linear_velocity = Vector2(bullet_speed, 0).rotated(rotation+PI/4)
 	bullet.rotation_degrees = rotation_degrees + rotation_offset

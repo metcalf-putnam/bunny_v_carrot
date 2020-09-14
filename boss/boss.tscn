@@ -83,14 +83,17 @@ script = ExtResource( 2 )
 Bullet = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( -40, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -40, 0 )
 rotation = -1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 6
+frame = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.07
@@ -101,5 +104,11 @@ anims/idle = SubResource( 2 )
 anims/shoot = SubResource( 3 )
 
 [node name="GunTip" type="Position2D" parent="."]
-position = Vector2( 108.578, -6.30422 )
+position = Vector2( 54.3053, -2.52872 )
+
+[node name="PosLeft" type="Position2D" parent="GunTip"]
+position = Vector2( -1.00113, -15.3507 )
+
+[node name="PosRight" type="Position2D" parent="GunTip"]
+position = Vector2( 13.6821, 6.00678 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
