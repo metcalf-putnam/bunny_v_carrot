@@ -89,6 +89,7 @@ func dash():
 	if state == State.INACTIVE:
 		return
 	state = State.ACTIVE
+	$dash_sound.play()
 
 
 func update_sprite(direction : Vector2):
