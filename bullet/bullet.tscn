@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://bullet/Medium Explosion-Sheet_32x32.png" type="Texture" id=1]
 [ext_resource path="res://bullet/bullet.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.29529
 height = 3.22753
+
+[sub_resource type="AudioStreamRandomPitch" id=4]
+audio_stream = ExtResource( 3 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "explode"
@@ -60,8 +63,9 @@ hframes = 4
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -20.0
+stream = SubResource( 4 )
+volume_db = -11.0
+pitch_scale = 0.6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
