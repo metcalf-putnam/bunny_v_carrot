@@ -694,7 +694,7 @@ position = Vector2( 0, -0.148651 )
 texture = ExtResource( 2 )
 vframes = 18
 hframes = 4
-frame = 25
+frame = 24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_left = SubResource( 2 )
@@ -747,7 +747,8 @@ shape = SubResource( 49 )
 
 [node name="death_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.0
+volume_db = -16.341
+pitch_scale = 4.0
 
 [node name="hit_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

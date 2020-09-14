@@ -849,6 +849,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [ 0.0, -15.0, -15.0, 0.0 ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("StartButton:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="DynamicFont" id=19]
 size = 32
@@ -944,7 +956,6 @@ __meta__ = {
 }
 
 [node name="Title" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.625 )
 position = Vector2( 505.413, 57.0819 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 9 )
@@ -969,8 +980,6 @@ frame = 15
 stream = ExtResource( 15 )
 
 [node name="StartButton" type="Button" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 452.0
 margin_top = 104.0
 margin_right = 580.0
