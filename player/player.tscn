@@ -692,7 +692,7 @@ position = Vector2( 0, -0.148651 )
 texture = ExtResource( 2 )
 vframes = 18
 hframes = 4
-frame = 24
+frame = 25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_left = SubResource( 2 )

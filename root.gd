@@ -9,6 +9,7 @@ func _on_player_player_killed():
 	$BossStart/carrot.stop()
 	$GameOver.show()
 	$player.set_inactive()
+	$CarrotBombs.stop()
 
 
 func _on_GameOver_restart():
@@ -24,6 +25,7 @@ func _on_boss_killed():
 	$BossStart/carrot.stop()
 	$GameOver.show()
 	$player.set_inactive()
+	$CarrotBombs.stop()
 
 
 func _on_carrot_boss_health_updated(new_health):

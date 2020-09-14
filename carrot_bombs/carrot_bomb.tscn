@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://bullet/Esplosão_Cenoura_32x32.png" type="Texture" id=1]
+[ext_resource path="res://carrot_bombs/ring.png" type="Texture" id=2]
+[ext_resource path="res://carrot_bombs/carrot_bomb.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.5041
+
+[sub_resource type="Animation" id=3]
+resource_name = "explode"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Carrot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_explosion"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WarningArea:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "warning"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Carrot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WarningArea:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1, 1.6, 2, 2.4, 2.7, 3, 3.2, 3.4, 3.5, 3.6, 3.7, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.917647, 0.552941, 0.552941, 0 ), Color( 0.862745, 0.372549, 0.372549, 0.843137 ), Color( 0.917647, 0.552941, 0.552941, 0 ), Color( 0.862745, 0.372549, 0.372549, 0.843137 ), Color( 0.917647, 0.552941, 0.552941, 0 ), Color( 0.862745, 0.372549, 0.372549, 0.843137 ), Color( 0.917647, 0.552941, 0.552941, 0 ), Color( 0.862745, 0.372549, 0.372549, 0.843137 ), Color( 0.917647, 0.552941, 0.552941, 0 ), Color( 0.862745, 0.372549, 0.372549, 0.843137 ), Color( 0.917647, 0.552941, 0.552941, 0 ), Color( 0.862745, 0.372549, 0.372549, 0.843137 ), Color( 0.917647, 0.552941, 0.552941, 0 ), Color( 0.862745, 0.372549, 0.372549, 0.843137 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WarningArea:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_warning_end"
+} ]
+}
+
+[node name="CarrotBomb" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="WarningArea" type="Sprite" parent="."]
+modulate = Color( 0.862745, 0.372549, 0.372549, 0.843137 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Carrot" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "warning"
+anims/explode = SubResource( 3 )
+anims/warning = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_CarrotBomb_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_CarrotBomb_body_exited"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Esplosão_Cenoura_32x32.png-b45f6f15441f48e863676adc078918a6.stex"
+path="res://.import/ring.png-9d73531c5a683ef5b8d4fad52a1724de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bullet/Esplosão_Cenoura_32x32.png"
-dest_files=[ "res://.import/Esplosão_Cenoura_32x32.png-b45f6f15441f48e863676adc078918a6.stex" ]
+source_file="res://carrot_bombs/ring.png"
+dest_files=[ "res://.import/ring.png-9d73531c5a683ef5b8d4fad52a1724de.stex" ]
 
 [params]
 
