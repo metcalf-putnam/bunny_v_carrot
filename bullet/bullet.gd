@@ -1,14 +1,20 @@
 extends RigidBody2D
-var damage := 20
+var damage := 20.0
 
 
 func _ready():
 	$AudioStreamPlayer.play()
+	if Global.setting == "easy":
+		damage = 10
+	elif Global.setting == "normal":
+		damage = 15
+	else:
+		damage = 20
 
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-	
+
 
 func explode():
 	linear_velocity = Vector2(0,0)

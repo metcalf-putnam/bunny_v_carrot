@@ -4,6 +4,15 @@ var player
 var damage := 25
 
 
+func _ready():
+	if Global.setting == "easy":
+		damage = 20
+	elif Global.setting == "normal":
+		damage = 25
+	else:
+		damage = 30
+
+
 func _on_warning_end():
 	$AnimationPlayer.play("explode")
 	$AudioStreamPlayer.play()

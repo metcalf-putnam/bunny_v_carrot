@@ -96,7 +96,8 @@ func dash():
 func update_sprite(direction : Vector2):
 	$AnimationTree.set("parameters/idle/blend_position", direction)
 	$AnimationTree.set("parameters/walk/blend_position", direction)
-	$AnimationTree.set("parameters/attack/blend_position", direction)
+	if state != State.ATTACKING:
+		$AnimationTree.set("parameters/attack/blend_position", direction)
 	
 	
 	if state == State.ACTIVE:
@@ -105,6 +106,8 @@ func update_sprite(direction : Vector2):
 
 func hit(damage_in):
 	$hit_sound.play()
+	if !Global.damage_enabled:
+		return
 	health -= damage_in
 	$HealthBar.value = health
 	if health <= 0 and state != State.INACTIVE:

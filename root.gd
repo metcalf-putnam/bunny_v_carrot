@@ -26,6 +26,7 @@ func _on_carrot_boss_health_updated(new_health):
 
 
 func stop():
+	Global.damage_enabled = false
 	$BossStart/carrot.stop()
 	$player.set_inactive()
 	$CarrotBombs.stop()
@@ -38,6 +39,7 @@ func _on_StartButton_pressed():
 
 
 func start():
+	Global.damage_enabled = true
 	$AnimationPlayer.play("normal")
 	$Music.play()
 	$player.revive()

@@ -636,6 +636,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id=17]
 resource_name = "normal"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:modulate")
 tracks/0/interp = 1
@@ -986,6 +987,7 @@ stream = ExtResource( 15 )
 volume_db = -15.0
 
 [node name="StartButton" type="Button" parent="."]
+visible = false
 margin_left = 597.816
 margin_top = 331.042
 margin_right = 725.816
