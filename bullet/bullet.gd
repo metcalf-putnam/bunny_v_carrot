@@ -5,9 +5,9 @@ var damage := 20.0
 func _ready():
 	$AudioStreamPlayer.play()
 	if Global.setting == "easy":
-		damage = 10
+		damage = 8
 	elif Global.setting == "normal":
-		damage = 15
+		damage = 12
 	else:
 		damage = 20
 

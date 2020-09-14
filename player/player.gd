@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var speed = 200
+export var speed = 125
 export var dash_speed_multiplier := 3
 export var dash_length := .16 # Seconds 
 

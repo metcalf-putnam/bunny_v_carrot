@@ -52,9 +52,9 @@ func start():
 func _on_Easy_toggled(button_pressed):
 	if !button_pressed:
 		return
-	$player.damage = 8
-	$BossStart/carrot.turn_speed = PI/2
-	$CarrotBombs.max_wait = 2.5
+	$player.damage = 6
+	$BossStart/carrot.turn_speed = PI/4
+	$CarrotBombs.max_wait = 2
 	$Difficulty/Normal.pressed = false
 	$Difficulty/Hard.pressed = false
 	Global.setting = "easy"
@@ -63,7 +63,7 @@ func _on_Normal_toggled(button_pressed):
 	if !button_pressed:
 		return
 	$player.damage = 4
-	$BossStart/carrot.turn_speed = PI*2/3
+	$BossStart/carrot.turn_speed = PI*3/8
 	$CarrotBombs.max_wait = 1.5
 	$Difficulty/Easy.pressed = false
 	$Difficulty/Hard.pressed = false

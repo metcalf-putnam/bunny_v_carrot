@@ -6,7 +6,7 @@ var damage := 25
 
 func _ready():
 	if Global.setting == "easy":
-		damage = 20
+		damage = 15
 	elif Global.setting == "normal":
 		damage = 25
 	else:
