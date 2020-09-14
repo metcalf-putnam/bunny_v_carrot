@@ -329,6 +329,11 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 16, 16, 16, 16, 32, 0, 32 )
 } ]
 16/z_index = 0
 
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.866667, 0.686275, 0.0627451, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
 [sub_resource type="Curve2D" id=10]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 457.331, 254.614, 0, 0, 0, 0, 516.821, 262.471, 0, 0, 0, 0, 539.271, 296.145, 0, 0, 0, 0, 552.74, 337.676, 0, 0, 0, 0, 542.638, 364.615, 0, 0, 0, 0, 522.434, 390.432, 0, 0, 0, 0, 483.148, 400.534, 0, 0, 0, 0, 437.127, 391.554, 0, 0, 0, 0, 406.82, 369.105, 0, 0, 0, 0, 396.718, 332.064, 0, 0, 0, 0, 402.33, 298.39, 0, 0, 0, 0, 421.412, 273.696, 0, 0, 0, 0, 457.331, 254.614 )
@@ -384,6 +389,8 @@ margin_left = 253.235
 margin_top = 9.34387
 margin_right = 753.235
 margin_bottom = 23.3439
+custom_styles/fg = SubResource( 14 )
+custom_styles/bg = SubResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
