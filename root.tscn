@@ -369,6 +369,7 @@ position = Vector2( 513.738, 322.275 )
 
 [node name="carrot" parent="BossStart" instance=ExtResource( 1 )]
 position = Vector2( 0.798828, 1.25403 )
+rotation = 2.66512
 player_path = NodePath("../../player")
 
 [node name="GameOver" parent="." instance=ExtResource( 4 )]

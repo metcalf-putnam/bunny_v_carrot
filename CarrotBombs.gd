@@ -3,7 +3,7 @@ var player_in_area := false
 var bomb_index := 0
 export (PackedScene) var CarrotBomb
 var min_wait := 0.25
-var max_wait := 3
+var max_wait := 1.5
 var wait_step := 0.25
 
 
@@ -37,6 +37,8 @@ func spawn_bombs():
 	$InnerRing/PathFollow2D.offset = randi()
 	create_bomb($InnerRing/PathFollow2D.position)
 	
+	$MiddleRing/PathFollow2D.offset = randi()
+	create_bomb($MiddleRing/PathFollow2D.position)
 	$MiddleRing/PathFollow2D.offset = randi()
 	create_bomb($MiddleRing/PathFollow2D.position)
 	

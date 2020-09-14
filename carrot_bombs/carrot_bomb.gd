@@ -1,7 +1,7 @@
 extends Area2D
 var player
 
-var damage := 15
+var damage := 25
 
 
 func _on_warning_end():
