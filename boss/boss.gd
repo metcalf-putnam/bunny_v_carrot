@@ -6,7 +6,7 @@ export (PackedScene) var Bullet
 export (NodePath) var player_path
 var Player
 var bullet_speed = 350
-var turn_speed = PI*2/3
+var turn_speed = PI 
 var desired_rotation
 var health := 100
 signal boss_health_updated
