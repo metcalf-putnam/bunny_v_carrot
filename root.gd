@@ -45,3 +45,31 @@ func start():
 	$player.position = $PlayerStart.position
 	yield(get_tree().create_timer(1), "timeout") # TODO: setup count down
 	$BossStart/carrot.start()
+
+
+func _on_Easy_toggled(button_pressed):
+	if !button_pressed:
+		return
+	$player.damage = 8
+	$CarrotBombs.max_wait = 3
+	$Difficulty/Normal.pressed = false
+	$Difficulty/Hard.pressed = false
+	Global.setting = "easy"
+
+func _on_Normal_toggled(button_pressed):
+	if !button_pressed:
+		return
+	$player.damage = 4
+	$CarrotBombs.max_wait = 1.5
+	$Difficulty/Easy.pressed = false
+	$Difficulty/Hard.pressed = false
+	Global.setting = "normal"
+
+func _on_Hard_toggled(button_pressed):
+	if !button_pressed:
+		return
+	$player.damage = 2
+	$CarrotBombs.max_wait = 0.75
+	$Difficulty/Easy.pressed = false
+	$Difficulty/Normal.pressed = false
+	Global.setting = "hard"

@@ -95,9 +95,15 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1.9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.1, 1.6, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "_on_hard_explosion"
+}, {
+"args": [  ],
+"method": "_on_normal_explosion"
+}, {
 "args": [  ],
 "method": "_on_warning_end"
 } ]
@@ -110,7 +116,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="WarningArea" type="Sprite" parent="."]
-modulate = Color( 0.917647, 0.552941, 0.552941, 0 )
+modulate = Color( 0.917647, 0.552941, 0.552941, 1.0051e-06 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 

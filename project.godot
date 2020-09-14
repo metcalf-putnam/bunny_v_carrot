@@ -19,6 +19,10 @@ config/name="BunnyVsCarrot"
 run/main_scene="res://root.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://global.gd"
+
 [display]
 
 window/size/height=640
