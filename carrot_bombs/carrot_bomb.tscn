@@ -110,7 +110,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="WarningArea" type="Sprite" parent="."]
-modulate = Color( 0.862745, 0.372549, 0.372549, 0.843137 )
+modulate = Color( 0.917647, 0.552941, 0.552941, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
@@ -126,6 +126,5 @@ anims/warning = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -14.0
 [connection signal="body_entered" from="." to="." method="_on_CarrotBomb_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_CarrotBomb_body_exited"]

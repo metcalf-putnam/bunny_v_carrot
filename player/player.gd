@@ -75,6 +75,7 @@ func _on_attack_end():
 
 
 func dash():
+	$dash_sound.play()
 	can_dash = false
 	$DashCooldown.start()
 	$CPUParticles2D.emitting = true
