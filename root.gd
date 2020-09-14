@@ -3,6 +3,7 @@ extends Node2D
 
 func _ready():
 	$GameOver.hide()
+	$AudioStreamPlayer.play()
 
 
 func _on_player_player_killed():
@@ -10,6 +11,7 @@ func _on_player_player_killed():
 	$GameOver.show()
 	$player.set_inactive()
 	$CarrotBombs.stop()
+	$AudioStreamPlayer.stop()
 
 
 func _on_GameOver_restart():
@@ -26,6 +28,7 @@ func _on_boss_killed():
 	$GameOver.show()
 	$player.set_inactive()
 	$CarrotBombs.stop()
+	$AudioStreamPlayer.stop()
 
 
 func _on_carrot_boss_health_updated(new_health):
