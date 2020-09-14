@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Dash Sound.wav-74827523282bd5daec7e687bc185e64d.sample"
+
+[deps]
+
+source_file="res://player/Dash Sound.wav"
+dest_files=[ "res://.import/Dash Sound.wav-74827523282bd5daec7e687bc185e64d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -336,26 +336,26 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 16, 16, 16, 16, 32, 0, 32 )
 } ]
 16/z_index = 0
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=10]
 size = 32
 font_data = ExtResource( 14 )
 
-[sub_resource type="Curve2D" id=10]
+[sub_resource type="Curve2D" id=11]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 457.331, 254.614, 0, 0, 0, 0, 516.821, 262.471, 0, 0, 0, 0, 539.271, 296.145, 0, 0, 0, 0, 552.74, 337.676, 0, 0, 0, 0, 542.638, 364.615, 0, 0, 0, 0, 522.434, 390.432, 0, 0, 0, 0, 483.148, 400.534, 0, 0, 0, 0, 437.127, 391.554, 0, 0, 0, 0, 406.82, 369.105, 0, 0, 0, 0, 396.718, 332.064, 0, 0, 0, 0, 402.33, 298.39, 0, 0, 0, 0, 421.412, 273.696, 0, 0, 0, 0, 457.331, 254.614 )
 }
 
-[sub_resource type="Curve2D" id=11]
+[sub_resource type="Curve2D" id=12]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 481.508, 228.018, 0, 0, 0, 0, 528.725, 237.818, 0, 0, 0, 0, 560.798, 270.781, 0, 0, 0, 0, 582.179, 319.781, 0, 0, 0, 0, 578.616, 368.78, 0, 0, 0, 0, 568.816, 403.525, 0, 0, 0, 0, 533.18, 421.343, 0, 0, 0, 0, 482.398, 430.252, 0, 0, 0, 0, 424.49, 423.125, 0, 0, 0, 0, 380.836, 393.725, 0, 0, 0, 0, 365.691, 345.617, 0, 0, 0, 0, 371.927, 294.835, 0, 0, 0, 0, 394.2, 259.2, 0, 0, 0, 0, 436.963, 236.036, 0, 0, 0, 0, 481.508, 228.018 )
 }
 
-[sub_resource type="Curve2D" id=12]
+[sub_resource type="Curve2D" id=13]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 468.144, 193.273, 0, 0, 0, 0, 535.852, 200.4, 0, 0, 0, 0, 579.506, 223.564, 0, 0, 0, 0, 600.888, 266.327, 0, 0, 0, 0, 620.488, 324.235, 0, 0, 0, 0, 620.488, 375.016, 0, 0, 0, 0, 607.124, 422.234, 0, 0, 0, 0, 574.161, 456.979, 0, 0, 0, 0, 510.016, 466.779, 0, 0, 0, 0, 429.835, 468.561, 0, 0, 0, 0, 373.709, 446.288, 0, 0, 0, 0, 343.418, 400.852, 0, 0, 0, 0, 336.291, 339.38, 0, 0, 0, 0, 343.418, 271.672, 0, 0, 0, 0, 369.254, 228.018, 0, 0, 0, 0, 415.581, 201.291, 0, 0, 0, 0, 468.144, 193.273 )
 }
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=14]
 radius = 160.298
 
 [sub_resource type="Animation" id=15]
@@ -621,6 +621,18 @@ tracks/10/keys = {
 "update": 1,
 "values": [ "play again?" ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Effects:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "normal"
@@ -697,8 +709,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "title"
+[sub_resource type="Animation" id=18]
 length = 2.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("BossStart/carrot:position")
@@ -826,8 +837,20 @@ tracks/9/keys = {
 "update": 1,
 "values": [ "Play" ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Effects:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.4, 1.7, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.0, -15.0, 0.0 ]
+}
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=19]
 size = 32
 font_data = ExtResource( 14 )
 
@@ -842,7 +865,7 @@ format = 1
 tile_data = PoolIntArray( 0, 9, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 10, 0, 11, 10, 0, 12, 10, 0, 13, 10, 0, 14, 10, 0, 15, 11, 0, 65536, 12, 0, 65537, 0, 0, 65538, 2, 0, 65539, 0, 0, 65540, 2, 0, 65541, 0, 0, 65542, 2, 0, 65543, 0, 0, 65544, 2, 0, 65545, 0, 0, 65546, 2, 0, 65547, 0, 0, 65548, 2, 0, 65549, 0, 0, 65550, 2, 0, 65551, 15, 0, 131072, 12, 0, 131073, 3, 0, 131074, 5, 0, 131075, 3, 0, 131076, 5, 0, 131077, 3, 0, 131078, 5, 0, 131079, 3, 0, 131080, 5, 0, 131081, 3, 0, 131082, 5, 0, 131083, 3, 0, 131084, 5, 0, 131085, 3, 0, 131086, 5, 0, 131087, 15, 0, 196608, 12, 0, 196609, 3, 0, 196610, 5, 0, 196611, 3, 0, 196612, 5, 0, 196613, 3, 0, 196614, 5, 0, 196615, 3, 0, 196616, 5, 0, 196617, 3, 0, 196618, 5, 0, 196619, 3, 0, 196620, 5, 0, 196621, 3, 0, 196622, 5, 0, 196623, 15, 0, 262144, 12, 0, 262145, 3, 0, 262146, 5, 0, 262147, 3, 0, 262148, 5, 0, 262149, 3, 0, 262150, 5, 0, 262151, 3, 0, 262152, 5, 0, 262153, 3, 0, 262154, 5, 0, 262155, 3, 0, 262156, 5, 0, 262157, 3, 0, 262158, 5, 0, 262159, 15, 0, 327680, 12, 0, 327681, 3, 0, 327682, 5, 0, 327683, 3, 0, 327684, 5, 0, 327685, 3, 0, 327686, 5, 0, 327687, 3, 0, 327688, 5, 0, 327689, 3, 0, 327690, 5, 0, 327691, 3, 0, 327692, 5, 0, 327693, 3, 0, 327694, 5, 0, 327695, 15, 0, 393216, 12, 0, 393217, 3, 0, 393218, 5, 0, 393219, 3, 0, 393220, 5, 0, 393221, 3, 0, 393222, 5, 0, 393223, 3, 0, 393224, 5, 0, 393225, 3, 0, 393226, 5, 0, 393227, 3, 0, 393228, 5, 0, 393229, 3, 0, 393230, 5, 0, 393231, 15, 0, 458752, 12, 0, 458753, 3, 0, 458754, 5, 0, 458755, 3, 0, 458756, 5, 0, 458757, 3, 0, 458758, 5, 0, 458759, 3, 0, 458760, 5, 0, 458761, 3, 0, 458762, 5, 0, 458763, 3, 0, 458764, 5, 0, 458765, 3, 0, 458766, 5, 0, 458767, 15, 0, 524288, 12, 0, 524289, 6, 0, 524290, 8, 0, 524291, 6, 0, 524292, 8, 0, 524293, 6, 0, 524294, 8, 0, 524295, 6, 0, 524296, 8, 0, 524297, 6, 0, 524298, 8, 0, 524299, 6, 0, 524300, 8, 0, 524301, 6, 0, 524302, 8, 0, 524303, 15, 0, 589824, 13, 0, 589825, 14, 0, 589826, 14, 0, 589827, 14, 0, 589828, 14, 0, 589829, 14, 0, 589830, 14, 0, 589831, 14, 0, 589832, 14, 0, 589833, 14, 0, 589834, 14, 0, 589835, 14, 0, 589836, 14, 0, 589837, 14, 0, 589838, 14, 0, 589839, 16, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 279.018, -41.1758 )
+position = Vector2( 263, 410 )
 scale = Vector2( 2, 2 )
 speed = 400
 
@@ -853,7 +876,7 @@ position = Vector2( 264.901, 408.576 )
 position = Vector2( 513.738, 322.275 )
 
 [node name="carrot" parent="BossStart" instance=ExtResource( 1 )]
-position = Vector2( -11.2148, -383.18 )
+position = Vector2( 0.798828, 1.25403 )
 rotation = 2.66512
 player_path = NodePath("../../player")
 
@@ -864,7 +887,7 @@ margin_left = 253.699
 margin_top = 13.051
 margin_right = 753.699
 margin_bottom = 36.051
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -874,30 +897,30 @@ script = ExtResource( 6 )
 CarrotBomb = ExtResource( 7 )
 
 [node name="InnerRing" type="Path2D" parent="CarrotBombs"]
-curve = SubResource( 10 )
+curve = SubResource( 11 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CarrotBombs/InnerRing"]
 position = Vector2( 457.332, 254.614 )
-rotation = 0.131312
+rotation = 0.131317
 offset = 0.00158691
 
 [node name="MiddleRing" type="Path2D" parent="CarrotBombs"]
-curve = SubResource( 11 )
+curve = SubResource( 12 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CarrotBombs/MiddleRing"]
 position = Vector2( 481.508, 228.018 )
-rotation = 0.204635
+rotation = 0.204644
 
 [node name="OuterRing" type="Path2D" parent="CarrotBombs"]
-curve = SubResource( 12 )
+curve = SubResource( 13 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CarrotBombs/OuterRing"]
 position = Vector2( 468.144, 193.273 )
-rotation = 0.104872
+rotation = 0.104866
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarrotBombs"]
 position = Vector2( 478.877, 331.612 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="Timer" type="Timer" parent="CarrotBombs"]
 
@@ -909,9 +932,10 @@ volume_db = -20.0
 anims/death = SubResource( 15 )
 anims/feast = SubResource( 16 )
 anims/normal = SubResource( 17 )
-anims/title = SubResource( 14 )
+anims/title = SubResource( 18 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 modulate = Color( 0.113725, 0.113725, 0.113725, 1 )
 margin_right = 1024.0
 margin_bottom = 640.0
@@ -920,7 +944,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.625 )
 position = Vector2( 505.413, 57.0819 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 9 )
@@ -934,6 +958,7 @@ hframes = 10
 frame = 9
 
 [node name="FeastAnim" type="Sprite" parent="."]
+visible = false
 position = Vector2( 492, 284 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 10 )
@@ -942,15 +967,16 @@ frame = 15
 
 [node name="Effects" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
-volume_db = -15.54
 
 [node name="StartButton" type="Button" parent="."]
-margin_left = 464.591
-margin_top = 320.951
-margin_right = 592.591
-margin_bottom = 350.951
-custom_fonts/font = SubResource( 18 )
-text = "play again?"
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 452.0
+margin_top = 104.0
+margin_right = 580.0
+margin_bottom = 134.0
+custom_fonts/font = SubResource( 19 )
+text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
