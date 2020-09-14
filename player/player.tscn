@@ -3,7 +3,7 @@
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/Bunny-Sheet_64x64.png" type="Texture" id=2]
 [ext_resource path="res://player/Hit.wav" type="AudioStream" id=3]
-[ext_resource path="res://player/Enemy Death.wav" type="AudioStream" id=4]
+[ext_resource path="res://player/Death.wav" type="AudioStream" id=4]
 [ext_resource path="res://player/Dash_Particle.png" type="Texture" id=5]
 [ext_resource path="res://player/circle.png" type="Texture" id=6]
 
@@ -745,11 +745,11 @@ shape = SubResource( 49 )
 
 [node name="death_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.097
+volume_db = -20.0
 
 [node name="hit_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
+volume_db = -22.117
 
 [node name="Tween" type="Tween" parent="."]
 
