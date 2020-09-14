@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://boss/BigBadCarrot_112x117.png" type="Texture" id=1]
 [ext_resource path="res://boss/boss.gd" type="Script" id=2]
 [ext_resource path="res://bullet/bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://boss/hit.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.4542
@@ -111,4 +112,7 @@ position = Vector2( -1.00113, -15.3507 )
 
 [node name="PosRight" type="Position2D" parent="GunTip"]
 position = Vector2( 13.6821, 6.00678 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -27,7 +27,7 @@ func _on_Timer_timeout():
 
 
 func take_damage(damage : float):
-	print("boss taking damage")
+	$AudioStreamPlayer.play()
 	health -= damage
 	emit_signal("boss_health_updated", health)
 
