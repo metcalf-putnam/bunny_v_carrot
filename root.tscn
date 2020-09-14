@@ -1,9 +1,9 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://boss/boss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://root.gd" type="Script" id=3]
-[ext_resource path="res://utils/GameOver.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/Extra_Death.wav" type="AudioStream" id=4]
 [ext_resource path="res://tilset/CarrotFarm_32x32.png" type="Texture" id=5]
 [ext_resource path="res://CarrotBombs.gd" type="Script" id=6]
 [ext_resource path="res://carrot_bombs/carrot_bomb.tscn" type="PackedScene" id=7]
@@ -11,6 +11,10 @@
 [ext_resource path="res://ui/Tittle.png" type="Texture" id=9]
 [ext_resource path="res://player/feast-Sheet_191x128.png" type="Texture" id=10]
 [ext_resource path="res://player/DeathAnimation-Sheet_199x117.png" type="Texture" id=11]
+[ext_resource path="res://boss/hit.wav" type="AudioStream" id=12]
+[ext_resource path="res://player/Hit.wav" type="AudioStream" id=13]
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://player/Carrot_Eat.wav" type="AudioStream" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 16, 0, 16 )
@@ -332,6 +336,10 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 16, 16, 16, 16, 32, 0, 32 )
 } ]
 16/z_index = 0
 
+[sub_resource type="DynamicFont" id=19]
+size = 32
+font_data = ExtResource( 14 )
+
 [sub_resource type="Curve2D" id=10]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 457.331, 254.614, 0, 0, 0, 0, 516.821, 262.471, 0, 0, 0, 0, 539.271, 296.145, 0, 0, 0, 0, 552.74, 337.676, 0, 0, 0, 0, 542.638, 364.615, 0, 0, 0, 0, 522.434, 390.432, 0, 0, 0, 0, 483.148, 400.534, 0, 0, 0, 0, 437.127, 391.554, 0, 0, 0, 0, 406.82, 369.105, 0, 0, 0, 0, 396.718, 332.064, 0, 0, 0, 0, 402.33, 298.39, 0, 0, 0, 0, 421.412, 273.696, 0, 0, 0, 0, 457.331, 254.614 )
@@ -352,7 +360,7 @@ radius = 160.298
 
 [sub_resource type="Animation" id=15]
 resource_name = "death"
-length = 1.2
+length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DeathAnim:frame")
 tracks/0/interp = 1
@@ -360,7 +368,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"times": PoolRealArray( 0.6, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
@@ -372,15 +380,113 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DeathAnim:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Effects")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.9 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FeastAnim:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("StartButton:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 597.816, 331.042 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("StartButton:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("StartButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2.4, 2.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("StartButton:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "retry?" ]
+}
 
 [sub_resource type="Animation" id=16]
 resource_name = "feast"
-length = 1.8
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FeastAnim:visible")
 tracks/0/interp = 1
@@ -400,10 +506,120 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"times": PoolRealArray( 0.2, 0.6, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+"values": [ 0, 0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.113725, 0.113725, 0.113725, 0 ), Color( 0.113725, 0.113725, 0.113725, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FeastAnim:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Effects")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 1.4 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("DeathAnim:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("StartButton:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("StartButton:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 464.591, 320.951 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("StartButton:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 3.5, 3.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("StartButton:text")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "play again?" ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -415,7 +631,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
@@ -427,7 +643,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0.798828, 1.25403 ) ]
@@ -439,15 +655,51 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 263, 410 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("DeathAnim:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FeastAnim:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ColorRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "title"
-length = 2.5
+length = 2.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("BossStart/carrot:position")
 tracks/0/interp = 1
@@ -479,7 +731,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5, 2.5 ),
+"times": PoolRealArray( 0, 1.9, 2.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -508,6 +760,76 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/5/type = "audio"
+tracks/5/path = NodePath("Effects")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0.5, 1 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("StartButton:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ColorRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("StartButton:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 452, 104 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("StartButton:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Play" ]
+}
+
+[sub_resource type="DynamicFont" id=18]
+size = 32
+font_data = ExtResource( 14 )
 
 [node name="root" type="Node2D"]
 script = ExtResource( 3 )
@@ -520,7 +842,7 @@ format = 1
 tile_data = PoolIntArray( 0, 9, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 10, 0, 11, 10, 0, 12, 10, 0, 13, 10, 0, 14, 10, 0, 15, 11, 0, 65536, 12, 0, 65537, 0, 0, 65538, 2, 0, 65539, 0, 0, 65540, 2, 0, 65541, 0, 0, 65542, 2, 0, 65543, 0, 0, 65544, 2, 0, 65545, 0, 0, 65546, 2, 0, 65547, 0, 0, 65548, 2, 0, 65549, 0, 0, 65550, 2, 0, 65551, 15, 0, 131072, 12, 0, 131073, 3, 0, 131074, 5, 0, 131075, 3, 0, 131076, 5, 0, 131077, 3, 0, 131078, 5, 0, 131079, 3, 0, 131080, 5, 0, 131081, 3, 0, 131082, 5, 0, 131083, 3, 0, 131084, 5, 0, 131085, 3, 0, 131086, 5, 0, 131087, 15, 0, 196608, 12, 0, 196609, 3, 0, 196610, 5, 0, 196611, 3, 0, 196612, 5, 0, 196613, 3, 0, 196614, 5, 0, 196615, 3, 0, 196616, 5, 0, 196617, 3, 0, 196618, 5, 0, 196619, 3, 0, 196620, 5, 0, 196621, 3, 0, 196622, 5, 0, 196623, 15, 0, 262144, 12, 0, 262145, 3, 0, 262146, 5, 0, 262147, 3, 0, 262148, 5, 0, 262149, 3, 0, 262150, 5, 0, 262151, 3, 0, 262152, 5, 0, 262153, 3, 0, 262154, 5, 0, 262155, 3, 0, 262156, 5, 0, 262157, 3, 0, 262158, 5, 0, 262159, 15, 0, 327680, 12, 0, 327681, 3, 0, 327682, 5, 0, 327683, 3, 0, 327684, 5, 0, 327685, 3, 0, 327686, 5, 0, 327687, 3, 0, 327688, 5, 0, 327689, 3, 0, 327690, 5, 0, 327691, 3, 0, 327692, 5, 0, 327693, 3, 0, 327694, 5, 0, 327695, 15, 0, 393216, 12, 0, 393217, 3, 0, 393218, 5, 0, 393219, 3, 0, 393220, 5, 0, 393221, 3, 0, 393222, 5, 0, 393223, 3, 0, 393224, 5, 0, 393225, 3, 0, 393226, 5, 0, 393227, 3, 0, 393228, 5, 0, 393229, 3, 0, 393230, 5, 0, 393231, 15, 0, 458752, 12, 0, 458753, 3, 0, 458754, 5, 0, 458755, 3, 0, 458756, 5, 0, 458757, 3, 0, 458758, 5, 0, 458759, 3, 0, 458760, 5, 0, 458761, 3, 0, 458762, 5, 0, 458763, 3, 0, 458764, 5, 0, 458765, 3, 0, 458766, 5, 0, 458767, 15, 0, 524288, 12, 0, 524289, 6, 0, 524290, 8, 0, 524291, 6, 0, 524292, 8, 0, 524293, 6, 0, 524294, 8, 0, 524295, 6, 0, 524296, 8, 0, 524297, 6, 0, 524298, 8, 0, 524299, 6, 0, 524300, 8, 0, 524301, 6, 0, 524302, 8, 0, 524303, 15, 0, 589824, 13, 0, 589825, 14, 0, 589826, 14, 0, 589827, 14, 0, 589828, 14, 0, 589829, 14, 0, 589830, 14, 0, 589831, 14, 0, 589832, 14, 0, 589833, 14, 0, 589834, 14, 0, 589835, 14, 0, 589836, 14, 0, 589837, 14, 0, 589838, 14, 0, 589839, 16, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 263, 410 )
+position = Vector2( 279.018, -41.1758 )
 scale = Vector2( 2, 2 )
 speed = 400
 
@@ -531,20 +853,18 @@ position = Vector2( 264.901, 408.576 )
 position = Vector2( 513.738, 322.275 )
 
 [node name="carrot" parent="BossStart" instance=ExtResource( 1 )]
-position = Vector2( 0.798828, 1.25403 )
+position = Vector2( -11.2148, -383.18 )
 rotation = 2.66512
 player_path = NodePath("../../player")
-
-[node name="GameOver" parent="." instance=ExtResource( 4 )]
-position = Vector2( 513.539, 322.069 )
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 253.235
-margin_top = 9.34387
-margin_right = 753.235
-margin_bottom = 23.3439
+margin_left = 253.699
+margin_top = 13.051
+margin_right = 753.699
+margin_bottom = 36.051
+custom_fonts/font = SubResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -581,7 +901,7 @@ shape = SubResource( 13 )
 
 [node name="Timer" type="Timer" parent="CarrotBombs"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -20.0
 
@@ -590,6 +910,14 @@ anims/death = SubResource( 15 )
 anims/feast = SubResource( 16 )
 anims/normal = SubResource( 17 )
 anims/title = SubResource( 14 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.113725, 0.113725, 0.113725, 1 )
+margin_right = 1024.0
+margin_bottom = 640.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -603,16 +931,32 @@ position = Vector2( 496.409, 287.262 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 11 )
 hframes = 10
+frame = 9
 
 [node name="FeastAnim" type="Sprite" parent="."]
-visible = false
 position = Vector2( 492, 284 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 10 )
 hframes = 28
+frame = 15
+
+[node name="Effects" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -15.54
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 464.591
+margin_top = 320.951
+margin_right = 592.591
+margin_bottom = 350.951
+custom_fonts/font = SubResource( 18 )
+text = "play again?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="player_killed" from="player" to="." method="_on_player_player_killed"]
 [connection signal="boss_health_updated" from="BossStart/carrot" to="." method="_on_carrot_boss_health_updated"]
-[connection signal="restart" from="GameOver" to="." method="_on_GameOver_restart"]
 [connection signal="body_entered" from="CarrotBombs" to="CarrotBombs" method="_on_CarrotBombs_body_entered"]
 [connection signal="body_exited" from="CarrotBombs" to="CarrotBombs" method="_on_CarrotBombs_body_exited"]
 [connection signal="timeout" from="CarrotBombs/Timer" to="CarrotBombs" method="_on_Timer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]

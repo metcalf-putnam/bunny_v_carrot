@@ -693,7 +693,7 @@ position = Vector2( 0, -0.148651 )
 texture = ExtResource( 2 )
 vframes = 18
 hframes = 4
-frame = 25
+frame = 24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_left = SubResource( 2 )
@@ -783,6 +783,9 @@ texture = ExtResource( 6 )
 
 [node name="slash_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="DashCooldown" type="Timer" parent="."]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]

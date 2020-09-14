@@ -16,6 +16,7 @@ var dash_modulate = Color(.5, .5, .5)
 var normal_modulate = Color(1, 1, 1)
 var target
 var damage := 3
+var can_dash = true
 
 signal player_killed
 
@@ -53,16 +54,14 @@ func _physics_process(_delta):
 func _input(event):
 	if state == State.INACTIVE or state == State.DASHING:
 		return
-	if event.is_action_pressed("ui_dash"):
+	if event.is_action_pressed("ui_dash") and can_dash:
 		dash()
 	if event.is_action_pressed("ui_attack"):
-		print("attack!")
 		attack()
 
 
 func attack():
 	state = State.ATTACKING
-	print("attacking!")
 	$slash_sound.play()
 	animationState.travel("attack")
 
@@ -76,6 +75,8 @@ func _on_attack_end():
 
 
 func dash():
+	can_dash = false
+	$DashCooldown.start()
 	$CPUParticles2D.emitting = true
 	state = State.DASHING
 	$Sprite.modulate = dash_modulate
@@ -113,7 +114,6 @@ func hit(damage_in):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("boss_weapon"):
-		print("well hey there")
 		hit(body.damage)
 		body.explode()
 
@@ -139,3 +139,7 @@ func _on_AttackArea_body_entered(body):
 func _on_AttackArea_body_exited(body):
 	if target and target == body:
 		target = null
+
+
+func _on_DashCooldown_timeout():
+	can_dash = true

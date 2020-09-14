@@ -13,6 +13,7 @@ signal boss_health_updated
 
 
 func _ready():
+	$AnimationPlayer.play("idle")
 	emit_signal("boss_health_updated", health)
 	if player_path:
 		Player = get_node(player_path)
