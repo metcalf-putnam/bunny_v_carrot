@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Rocket.wav-be4dda6ccac99be3d94ffad8d9c13508.sample"
+path="res://.import/First Shot.wav-f1fc9233afb331f5d4b9bd1626533aa8.sample"
 
 [deps]
 
-source_file="res://bullet/Rocket.wav"
-dest_files=[ "res://.import/Rocket.wav-be4dda6ccac99be3d94ffad8d9c13508.sample" ]
+source_file="res://bullet/First Shot.wav"
+dest_files=[ "res://.import/First Shot.wav-f1fc9233afb331f5d4b9bd1626533aa8.sample" ]
 
 [params]
 
