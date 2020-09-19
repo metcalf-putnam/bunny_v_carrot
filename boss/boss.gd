@@ -19,7 +19,8 @@ func _ready():
 		Player = get_node(player_path)
 	else:
 		print("error: player not found by boss!")
-
+		return #a small thing which returns the code 
+		
 
 func _on_Timer_timeout():
 	pass
